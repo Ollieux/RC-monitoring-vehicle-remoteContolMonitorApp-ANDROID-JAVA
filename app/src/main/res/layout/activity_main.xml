@@ -7,16 +7,46 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/cam_img2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <Button
-        android:id="@+id/send_btn"
+        android:id="@+id/control_btn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="click" />
 
-    <ImageView
-        android:id="@+id/cam_img"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/left_btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="click" />
+
+        <Button
+            android:id="@+id/right_btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="click" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/center_btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="click" />
+
+
 
 
 
