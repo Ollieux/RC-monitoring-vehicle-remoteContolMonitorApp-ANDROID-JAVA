@@ -39,9 +39,8 @@ public class MainActivity extends AppCompatActivity
     private static final int PORT = 9977;
     private Socket socket1;
     private DataOutputStream out1;
-    int X;
-    int Y;
-    int Z;
+    private int X;
+    private int Y;
     private Button btnControl;
     private Button btnRight;
     private Button btnLeft;
@@ -205,7 +204,7 @@ public class MainActivity extends AppCompatActivity
                     {
                         try
                         {
-                            out1.write(("%" + Integer.toString(Z) + "," + Integer.toString(Y) + "#").getBytes()); //TODO: X, Y zamiast Y, Z
+                            out1.write(("%" + Integer.toString(X) + "," + Integer.toString(Y) + "#").getBytes());
                             Thread.sleep(100);
                         } catch (InterruptedException e)
                         {
@@ -267,7 +266,6 @@ public class MainActivity extends AppCompatActivity
         @Override
         protected void onProgressUpdate(Bitmap... values)
         {
-            //TODO: super.onProgressUpdate(values);
             super.onProgressUpdate(values);
             imgCam.setImageBitmap(values[0]);
         }
@@ -295,13 +293,12 @@ public class MainActivity extends AppCompatActivity
         @Override
         public void onSensorChanged(SensorEvent event)
         {
+
             float pitch = event.values[1];
             float roll = event.values[2];
-            float azimut = event.values[0];
 
-            X = Math.round(azimut);
             Y = Math.round(pitch);
-            Z = Math.round(roll);
+            X = Math.round(roll);
         }
 
     };
