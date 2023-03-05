@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity
     private static final String CHANNEL_ID = "101";
     private TextView txtToken;
     private String token;
-    private static final String IP = "192.168.1.5";
-//    private static final String IP = "192.168.1.31";
-    private static final int PORT = 9977;
+    public static String address = "";
+    public static String ip = "";
+    public static int port = 0;
     private Socket socket1;
     private DataOutputStream out1;
     int X;
@@ -75,6 +75,14 @@ public class MainActivity extends AppCompatActivity
 
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         orientation = mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
+
+
+        if (getIntent().hasExtra("address"))
+        {
+            address = getIntent().getStringExtra("address");
+        }
+
+        getIp();
 
 
         ImageReceiver imageReceiver = new ImageReceiver();
@@ -176,6 +184,13 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
+    private void getIp()
+    {
+        String list[] = address.split(":");
+        ip = list[0];
+        port = Integer.valueOf(list[1]);
+    }
+
     private void createNotificationChannel()
     {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
@@ -235,8 +250,8 @@ public class MainActivity extends AppCompatActivity
         {
             try
             {
-                InetAddress inet = InetAddress.getByName(IP);
-                socket1 = new Socket(inet, PORT);
+                InetAddress inet = InetAddress.getByName(ip);
+                socket1 = new Socket(inet, port);
 
                 out1 = new DataOutputStream(socket1.getOutputStream());
 
