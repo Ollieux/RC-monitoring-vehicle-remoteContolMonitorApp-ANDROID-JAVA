@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity
     private Button btnRight;
     private Button btnLeft;
     private Button btnCenter;
+    private Button btnExit;
     boolean mSending = false;
     boolean mSendingClear = false;
     private SendMessageTask sendMessageTask;
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity
         btnRight = (Button) findViewById(R.id.right_btn2);
         btnLeft = (Button) findViewById(R.id.left_btn2);
         btnCenter = (Button) findViewById(R.id.center_btn2);
+        btnExit = (Button) findViewById(R.id.exit_btn2);
 
         imgCam = (ImageView) findViewById(R.id.cam_img2);
 
