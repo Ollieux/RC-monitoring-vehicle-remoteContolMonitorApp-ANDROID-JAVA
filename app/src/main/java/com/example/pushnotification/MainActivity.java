@@ -203,13 +203,14 @@ public class MainActivity extends AppCompatActivity
                     {
                         try
                         {
-                            out1.write(("%" + Integer.toString(Y) + "," + Integer.toString(Z) + "#").getBytes()); //TODO: X, Y zamiast Y, Z
+                            out1.write(("%" + Integer.toString(Z) + "," + Integer.toString(Y) + "#").getBytes()); //TODO: X, Y zamiast Y, Z
                             Thread.sleep(100);
                         } catch (InterruptedException e)
                         {
                             e.printStackTrace();
                         }
                     }
+                    out1.write(("$#").getBytes());
                 }
                 else
                 {
