@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity
     boolean mSending = false;
     boolean mSendingClear = false;
     private SendMessageTask sendMessageTask;
+    private ImageReceiver imageReceiver;
     private ImageView imgCam;
     private SensorManager mSensorManager;
     Sensor orientation;
@@ -87,7 +88,8 @@ public class MainActivity extends AppCompatActivity
         getIp();
 
 
-        ImageReceiver imageReceiver = new ImageReceiver();
+//        ImageReceiver imageReceiver = new ImageReceiver();
+        imageReceiver = new ImageReceiver();
         imageReceiver.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
         btnControl.setOnClickListener(new View.OnClickListener()
@@ -160,6 +162,22 @@ public class MainActivity extends AppCompatActivity
                 }
                 sendMessageTask = new SendMessageTask();
                 sendMessageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "90");
+            }
+        });
+
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mSending)
+                {
+                    sendMessageTask.cancel(true);
+                    mSending = false;
+                    btnControl.setText("Start");
+                }
+
+                imageReceiver.cancel(true);
+
+                finish();
             }
         });
     }
@@ -271,6 +289,8 @@ public class MainActivity extends AppCompatActivity
                     Bitmap bitmap = BitmapFactory.decodeStream(new ByteArrayInputStream(encodedFrame));
                     publishProgress(bitmap);
                 }
+
+
             } catch (IOException e)
             {
                 e.printStackTrace();
@@ -292,6 +312,17 @@ public class MainActivity extends AppCompatActivity
         {
             super.onPostExecute(aVoid);
 
+            try
+            {
+                socket1.close();
+            } catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        protected void onCancelled() {
             try
             {
                 socket1.close();

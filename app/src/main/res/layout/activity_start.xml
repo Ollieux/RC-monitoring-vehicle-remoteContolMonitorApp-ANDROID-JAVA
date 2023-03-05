@@ -14,19 +14,12 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="192.168.1.31:1337" />
+        android:text="192.168.1.5:9977" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/connect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="POLACZ" />
 
         <Button
             android:id="@+id/exit"
@@ -35,7 +28,12 @@
             android:layout_weight="1"
             android:text="WYJDZ" />
 
-
+        <Button
+            android:id="@+id/connect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="POLACZ" />
 
     </LinearLayout>
 
