@@ -306,15 +306,23 @@ public class MainActivity extends Activity //AppCompatActivity
             Y = Math.round(pitch);
             X = Math.round(roll);
 
-            if ((Y < (UPPER_BOUND_Y - 5) && (Y > LOWER_BOUND_Y + 5)))
+            if (!mSending)
             {
-                if ((X < (UPPER_BOUND_X - 5)) && (X > (LOWER_BOUND_X + 5)))
+
+                if ((Y < (UPPER_BOUND_Y - 5) && (Y > LOWER_BOUND_Y + 5)))
                 {
-                    btnControl.setTextColor(Color.GREEN);
+                    if ((X < (UPPER_BOUND_X - 5)) && (X > (LOWER_BOUND_X + 5)))
+                    {
+                        btnControl.setTextColor(Color.GREEN);
+                    }
+                } else
+                {
+                    btnControl.setTextColor(Color.RED);
                 }
             }
-            else {
-                btnControl.setTextColor(Color.RED);
+            else
+            {
+                btnControl.setTextColor(Color.BLACK);
             }
         }
 
