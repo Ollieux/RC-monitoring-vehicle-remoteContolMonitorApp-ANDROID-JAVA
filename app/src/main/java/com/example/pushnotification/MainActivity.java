@@ -1,12 +1,15 @@
 package com.example.pushnotification;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+// import androidx.appcompat.app.AppCompatActivity;
 
+
+import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -29,8 +32,12 @@ import java.net.InetAddress;
 import java.net.Socket;
 
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends Activity //AppCompatActivity
 {
+    private final int LOWER_BOUND_X = -36;
+    private final int UPPER_BOUND_X = 36;
+    private final int LOWER_BOUND_Y = -100;
+    private final int UPPER_BOUND_Y = 0;
     private static final String CHANNEL_ID = "101";
     private TextView txtToken;
     private String token;
@@ -59,21 +66,20 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+         setContentView(R.layout.activity_main);
 
         // txtToken = (TextView) findViewById(R.id.txt_token);
 
         createNotificationChannel();
         // getToken();
 
-        btnControl = (Button) findViewById(R.id.control_btn2);
-        btnRight = (Button) findViewById(R.id.right_btn2);
-        btnLeft = (Button) findViewById(R.id.left_btn2);
-        btnCenter = (Button) findViewById(R.id.center_btn2);
-        btnExit = (Button) findViewById(R.id.exit_btn2);
+        btnControl = (Button) findViewById(R.id.control_btn);
+        btnRight = (Button) findViewById(R.id.right_btn);
+        btnLeft = (Button) findViewById(R.id.left_btn);
+        btnCenter = (Button) findViewById(R.id.center_btn);
+        btnExit = (Button) findViewById(R.id.exit_btn);
 
-        imgCam = (ImageView) findViewById(R.id.cam_img2);
-
+        imgCam = (ImageView) findViewById(R.id.cam_img);
 
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         orientation = mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
@@ -345,6 +351,25 @@ public class MainActivity extends AppCompatActivity
 
             Y = Math.round(pitch);
             X = Math.round(roll);
+
+            if (!mSending)
+            {
+
+                if ((Y < (UPPER_BOUND_Y - 5) && (Y > LOWER_BOUND_Y + 5)))
+                {
+                    if ((X < (UPPER_BOUND_X - 5)) && (X > (LOWER_BOUND_X + 5)))
+                    {
+                        btnControl.setTextColor(Color.GREEN);
+                    }
+                } else
+                {
+                    btnControl.setTextColor(Color.RED);
+                }
+            }
+            else
+            {
+                btnControl.setTextColor(Color.BLACK);
+            }
         }
 
     };
