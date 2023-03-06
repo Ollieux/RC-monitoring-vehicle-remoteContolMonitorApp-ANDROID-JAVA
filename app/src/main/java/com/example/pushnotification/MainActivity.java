@@ -9,6 +9,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -33,6 +34,10 @@ import java.net.Socket;
 
 public class MainActivity extends Activity //AppCompatActivity
 {
+    private final int LOWER_BOUND_X = -36;
+    private final int UPPER_BOUND_X = 36;
+    private final int LOWER_BOUND_Y = -100;
+    private final int UPPER_BOUND_Y = 0;
     private static final String CHANNEL_ID = "101";
     private TextView txtToken;
     private String token;
@@ -300,6 +305,17 @@ public class MainActivity extends Activity //AppCompatActivity
 
             Y = Math.round(pitch);
             X = Math.round(roll);
+
+            if ((Y < (UPPER_BOUND_Y - 5) && (Y > LOWER_BOUND_Y + 5)))
+            {
+                if ((X < (UPPER_BOUND_X - 5)) && (X > (LOWER_BOUND_X + 5)))
+                {
+                    btnControl.setTextColor(Color.GREEN);
+                }
+            }
+            else {
+                btnControl.setTextColor(Color.RED);
+            }
         }
 
     };
