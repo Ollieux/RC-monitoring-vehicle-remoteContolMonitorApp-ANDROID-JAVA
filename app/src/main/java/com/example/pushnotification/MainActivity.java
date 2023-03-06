@@ -1,8 +1,10 @@
 package com.example.pushnotification;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+// import androidx.appcompat.app.AppCompatActivity;
 
+
+import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.graphics.Bitmap;
@@ -29,7 +31,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends Activity //AppCompatActivity
 {
     private static final String CHANNEL_ID = "101";
     private TextView txtToken;
@@ -58,21 +60,20 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+         setContentView(R.layout.activity_main);
 
         // txtToken = (TextView) findViewById(R.id.txt_token);
 
         createNotificationChannel();
         // getToken();
 
-        btnControl = (Button) findViewById(R.id.control_btn2);
-        btnRight = (Button) findViewById(R.id.right_btn2);
-        btnLeft = (Button) findViewById(R.id.left_btn2);
-        btnCenter = (Button) findViewById(R.id.center_btn2);
-        btnExit = (Button) findViewById(R.id.exit_btn2);
+        btnControl = (Button) findViewById(R.id.control_btn);
+        btnRight = (Button) findViewById(R.id.right_btn);
+        btnLeft = (Button) findViewById(R.id.left_btn);
+        btnCenter = (Button) findViewById(R.id.center_btn);
+        btnExit = (Button) findViewById(R.id.exit_btn);
 
-        imgCam = (ImageView) findViewById(R.id.cam_img2);
-
+        imgCam = (ImageView) findViewById(R.id.cam_img);
 
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         orientation = mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
