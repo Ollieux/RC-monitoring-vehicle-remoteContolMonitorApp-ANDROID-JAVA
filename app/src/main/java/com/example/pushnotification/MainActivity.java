@@ -355,13 +355,11 @@ public class MainActivity extends Activity //AppCompatActivity
             if (!mSending)
             {
 
-                if ((Y < (UPPER_BOUND_Y - 5) && (Y > LOWER_BOUND_Y + 5)))
+                if ((Y < (UPPER_BOUND_Y - 5) && (Y > LOWER_BOUND_Y + 5)) && (X < (UPPER_BOUND_X - 5)) && (X > (LOWER_BOUND_X + 5)))
                 {
-                    if ((X < (UPPER_BOUND_X - 5)) && (X > (LOWER_BOUND_X + 5)))
-                    {
-                        btnControl.setTextColor(Color.GREEN);
-                    }
-                } else
+                    btnControl.setTextColor(Color.GREEN);
+                }
+                else
                 {
                     btnControl.setTextColor(Color.RED);
                 }
