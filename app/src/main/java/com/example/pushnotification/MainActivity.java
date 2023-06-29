@@ -36,7 +36,7 @@ public class MainActivity extends Activity //AppCompatActivity
 {
     private final int LOWER_BOUND_X = -36;
     private final int UPPER_BOUND_X = 36;
-    private final int LOWER_BOUND_Y = -100;
+    private final int LOWER_BOUND_Y = -65;
     private final int UPPER_BOUND_Y = 0;
     private static final String CHANNEL_ID = "101";
     private TextView txtToken;
@@ -117,8 +117,6 @@ public class MainActivity extends Activity //AppCompatActivity
                     if(!sendMessageTask.isCancelled())
                         sendMessageTask.cancel(true);
                 }
-
-
             }
         });
 
@@ -197,7 +195,7 @@ public class MainActivity extends Activity //AppCompatActivity
                 if(!task.isSuccessful())
                 {
                     //Log.d(TAG, "onComplete: Failed token");
-                    txtToken.setText(":(");
+                    txtToken.setText("...");
                 }
                 token = task.getResult();
                 // Log.d(TAG, "onComplete Token: " + token);
