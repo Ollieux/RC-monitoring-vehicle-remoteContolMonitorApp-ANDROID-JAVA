@@ -17,6 +17,7 @@ import android.hardware.SensorManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -60,6 +61,7 @@ public class MainActivity extends Activity //AppCompatActivity
     private ImageView imgCam;
     private SensorManager mSensorManager;
     Sensor orientation;
+    private static final String TAG = "PushNotification";
 
 
     @Override
@@ -71,7 +73,7 @@ public class MainActivity extends Activity //AppCompatActivity
         // txtToken = (TextView) findViewById(R.id.txt_token);
 
         createNotificationChannel();
-        // getToken();
+        getToken();
 
         btnControl = (Button) findViewById(R.id.control_btn);
         btnRight = (Button) findViewById(R.id.right_btn);
@@ -194,13 +196,13 @@ public class MainActivity extends Activity //AppCompatActivity
             {
                 if(!task.isSuccessful())
                 {
-                    //Log.d(TAG, "onComplete: Failed token");
-                    txtToken.setText("...");
+                    Log.d(TAG, "onComplete: Failed token");
+                    //txtToken.setText("...");
                 }
                 token = task.getResult();
-                // Log.d(TAG, "onComplete Token: " + token);
+                Log.d(TAG, "onComplete Token: " + token);
                 // System.out.println("token " + token);
-                txtToken.setText(token);
+                //txtToken.setText(token);
 
 
             }
